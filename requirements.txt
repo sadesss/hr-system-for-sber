@@ -7,7 +7,7 @@ python-dotenv
 requests
 uuid
 gigachat
-yaml
+pyyaml
 flasgger
 langgraph
 langchain
