@@ -4,6 +4,8 @@ from pathlib import Path
 from pypdf import PdfReader
 import time
 
+from app.db import Resume, SessionLocal
+
 upload_bp = Blueprint("upload", __name__)
 
 # Настройки
@@ -68,6 +70,16 @@ def upload_pdf():
     text = ""
     for page in reader.pages:
         text = text + page.extract_text()
+
+    created = 0
+    with SessionLocal() as session:
+        objs = [Resume(resume_text=text)]
+        session.add_all(objs)
+        session.commit()
+        created = len(objs)
+
+    text_resume = session.query(Resume).first().resume_text
+    #print(all_resume)
 
     return jsonify(
         message="saved",
