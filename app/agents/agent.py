@@ -1,17 +1,18 @@
 from langgraph.prebuilt import create_react_agent
 from langgraph.checkpoint.memory import MemorySaver
-from langchain.text_splitter import CharacterTextSplitter
 from langchain_gigachat.chat_models import GigaChat
 
-from langchain.document_loaders import PyPDFLoader
-import os
+
+text = "https://ngw.devices.sberbank.ru:9443/api/v2/oauth"
+
 
 llm_model = GigaChat(
-    base_url='http://liveaccess/v1/gc',
+    base_url="https://ngw.devices.sberbank.ru:9443/api/v2",
     access_token="18880c81-bbb1-449e-a277-40edecf6ea38",
-        model='GigaChat-2-Max',
-        verbose=False,
-        temperature=0.1)
+    model='GigaChat-2-Max',
+    verbose=False,
+    temperature=0.1
+)
 
 system_prompt = "Ты банковский помошник"
 agent = create_react_agent(
