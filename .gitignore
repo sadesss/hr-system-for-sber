@@ -3,3 +3,8 @@
 .idea
 
 app/secret.txt
+
+*__pycache__
+
+
+app/uploads
