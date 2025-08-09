@@ -1,11 +1,20 @@
+# init.py
 from flask import Flask
-
+from flasgger import Swagger
+from app.routes.pdf_in import upload_bp  # импортируем блюпринт из pdf_in.py
 
 def create_app():
-    app = Flask(__name__)
+    apps = Flask(__name__)
+    Swagger(apps)  # Swagger UI будет по /apidocs
+    apps.register_blueprint(upload_bp)
 
-    @app.route('/')
+    @apps.get("/")
     def hello_world():
-        return 'Hello, World!'
+        return "Hello, World!"
 
-    return app
+    return apps
+
+
+if __name__ == "__main__":
+    application = create_app()
+    application.run(host="127.0.0.1", port=5001, debug=True)
