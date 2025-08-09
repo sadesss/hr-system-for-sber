@@ -1,4 +1,3 @@
-# init.py
 from flask import Flask
 from flasgger import Swagger
 from app.routes.pdf_in import upload_bp  # импортируем блюпринт из pdf_in.py

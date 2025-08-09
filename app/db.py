@@ -5,7 +5,7 @@ import os
 
 DATABASE_URL = os.getenv(
     "DATABASE_URL",
-    "postgresql+psycopg2://postgres:postgres@localhost:5432/flask_db"
+    #"postgresql+psycopg2://postgres:postgres@localhost:5432/flask_db"
 )
 
 engine = create_engine(

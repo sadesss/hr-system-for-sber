@@ -2,8 +2,8 @@
 
 .idea
 app/secret.txt
-app/agents/creds.yaml
+app/creds.yaml
 *__pycache__
 
-
+uploads
 app/uploads

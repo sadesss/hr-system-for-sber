@@ -7,7 +7,7 @@ class GigaCredentials:
     client_secret: str
 
     def __init__(self):
-        creds_path: Path = Path("creds.yaml")
+        creds_path: Path = Path("app/creds.yaml")
         file_str: str = Path.read_text(creds_path)
         data = yaml.safe_load(file_str)
         self.client_id = data['client_id']

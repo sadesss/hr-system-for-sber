@@ -85,7 +85,7 @@ def upload_pdf():
     text_resume = session.query(Resume).first().resume_text
     #print(all_resume)
 
-    result = get_reqest(text_resume, resume_in)
+    result = get_reqest(text, resume_in)
     print(result)
 
     return jsonify(

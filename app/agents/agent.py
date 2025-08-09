@@ -1,25 +1,30 @@
 from langgraph.prebuilt import create_react_agent
 from langgraph.checkpoint.memory import MemorySaver
 from langchain_gigachat.chat_models import GigaChat
-from gigachat.models import AccessToken, ChatCompletion
+
+from gigachat.models import AccessToken
+
+
+from gigachat import GigaChat as GigaGiga
 
 from app.agents.GigaCredentials import GigaCredentials
 
 def get_reqest(query, system_prompt):
-    base_url = "https://ngw.devices.sberbank.ru:9443/api/v2/oauth"
+    base_url = "https://gigachat.devices.sberbank.ru/api/v1"
 
 
     giga_credentials: GigaCredentials = GigaCredentials()
-    giga: GigaChat = GigaChat(credentials=giga_credentials.get_base_encoded(),
+    giga: GigaChat = GigaGiga(credentials=giga_credentials.get_base_encoded(),
                               verify_ssl_certs=False)
     token: AccessToken = giga.get_token()
 
 
     llm_model = GigaChat(
         base_url=base_url,
-        access_token=token,
-        model='GigaChat-2-lite',
+        access_token=token.access_token,
+        model='GigaChat-2-Max',
         verbose=False,
+        verify_ssl_certs=False,
         temperature=0.1,
         max_tokens=100,
     )
