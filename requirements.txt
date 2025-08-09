@@ -9,3 +9,5 @@ langgraph
 langchain
 langchain_gigachat
 langchain-community
+pypdf
+SQLAlchemy

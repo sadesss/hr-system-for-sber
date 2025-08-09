@@ -2,6 +2,7 @@
 from flask import Flask
 from flasgger import Swagger
 from app.routes.pdf_in import upload_bp  # импортируем блюпринт из pdf_in.py
+from .db import init_db
 
 def create_app():
     apps = Flask(__name__)
@@ -9,6 +10,8 @@ def create_app():
     Swagger(apps)  # Swagger UI будет по /apidocs
 
     apps.register_blueprint(upload_bp, url_prefix='/resume')
+
+    init_db()
 
     @apps.get("/")
     def hello_world():
