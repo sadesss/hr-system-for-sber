@@ -1,9 +1,8 @@
 .venv
 
 .idea
-
 app/secret.txt
-
+app/creds.yaml
 *__pycache__
 
 

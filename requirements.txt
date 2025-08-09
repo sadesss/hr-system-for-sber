@@ -4,6 +4,10 @@ psycopg2-binary
 flask-sqlalchemy
 flask-migrate
 python-dotenv
+requests
+uuid
+gigachat
+yaml
 flasgger
 langgraph
 langchain
