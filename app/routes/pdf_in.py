@@ -6,6 +6,9 @@ import time
 
 from app.db import Resume, SessionLocal
 
+from app.agents.agent import get_reqest
+from app.agents.promts import resume_in
+
 upload_bp = Blueprint("upload", __name__)
 
 # Настройки
@@ -81,9 +84,12 @@ def upload_pdf():
     text_resume = session.query(Resume).first().resume_text
     #print(all_resume)
 
+    result = get_reqest(text_resume, resume_in)
+    print(result)
+
     return jsonify(
         message="saved",
         filename=final_name,
         path=str(save_path.resolve()),
-        text=text  # содержимое PDF
+        text=result  # содержимое PDF
     ), 201
