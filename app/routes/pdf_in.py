@@ -1,7 +1,7 @@
-# app.py
 from flask import Blueprint, request, jsonify
 from werkzeug.utils import secure_filename
 from pathlib import Path
+from pypdf import PdfReader
 import time
 
 upload_bp = Blueprint("upload", __name__)
@@ -64,8 +64,14 @@ def upload_pdf():
     save_path = UPLOAD_DIR / final_name
     f.save(save_path)
 
+    reader = PdfReader(f)
+    text = ""
+    for page in reader.pages:
+        text = text + page.extract_text()
+
     return jsonify(
         message="saved",
         filename=final_name,
-        path=str(save_path.resolve())
+        path=str(save_path.resolve()),
+        text=text  # содержимое PDF
     ), 201
