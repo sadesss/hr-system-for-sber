@@ -16,6 +16,7 @@ ALLOWED_EXT = {".pdf"}
 def is_pdf(filename: str) -> bool:
     return Path(filename).suffix.lower() in ALLOWED_EXT
 
+
 @upload_bp.post("/pdf")
 def upload_pdf():
     """
