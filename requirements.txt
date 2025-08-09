@@ -4,3 +4,7 @@ psycopg2-binary
 flask-sqlalchemy
 flask-migrate
 python-dotenv
+langgraph
+langchain
+langchain_gigachat
+langchain-community
