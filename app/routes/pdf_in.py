@@ -1,4 +1,3 @@
-# app.py
 from flask import Blueprint, request, jsonify
 from werkzeug.utils import secure_filename
 from pathlib import Path
@@ -13,6 +12,7 @@ ALLOWED_EXT = {".pdf"}
 
 def is_pdf(filename: str) -> bool:
     return Path(filename).suffix.lower() in ALLOWED_EXT
+
 
 @upload_bp.post("/pdf")
 def upload_pdf():
